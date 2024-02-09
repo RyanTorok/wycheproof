@@ -1,4 +1,5 @@
 load("//tools:build_defs.bzl", "accp_all_tests", "accp_tests", "bouncycastle_all_tests", "bouncycastle_tests", "conscrypt_all_tests", "conscrypt_tests", "spongycastle_all_tests", "spongycastle_tests")
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 
 testvectors = ["//testvectors_v1:all"]
 
@@ -191,3 +192,11 @@ java_test(
     data = testvectors,
     deps = common_deps,
 )
+
+pkg_tar(
+    name = "testvectors_v1_tar",
+    srcs = [
+        "//testvectors_v1:all",
+    ],
+)
+
